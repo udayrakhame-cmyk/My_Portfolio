@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uday Rakhme | Java & Web Developer</title>
+    <!-- Devicon & FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* PURPLE NEON / DARK VIOLET THEME (MATCHING REFERENCE IMAGE) */
+        :root {
+            --bg-main: #0c0714;          /* Deep Violet Obsidian */
+            --bg-card: #160d26;          /* Dark Purple Slate Card */
+            --bg-card-hover: #211338;    /* Glowing Card Slate */
+            --text-main: #f3f0f8;        /* Ice White Text */
+            --text-sub: #a395b8;         /* Soft Lavender Muted Text */
+            --accent-purple: #9d4edd;    /* Electric Purple Accent */
+            --accent-glow: rgba(157, 78, 221, 0.35);
+            --border-color: #2e1a47;     /* Purple Tinted Border */
+            --badge-bg: #23123b;        /* Dark Purple Badge */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(12, 7, 20, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1.2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-purple);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-purple);
+        }
+
+        /* HERO SECTION (LEFT-ALIGNED PROFILE WITH PURPLE AURA - MATCHING UI REF) */
+        .hero-banner {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 4rem 4rem 4rem;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            max-width: 780px;
+            z-index: 2;
+        }
+
+        .profile-avatar-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-purple);
+            box-shadow: 0 0 25px var(--accent-glow);
+        }
+
+        .profile-tag {
+            background-color: var(--badge-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-size: 3.4rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-title span {
+            color: var(--accent-purple);
+            border-bottom: 2px dashed var(--accent-purple);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            margin-bottom: 2rem;
+            max-width: 680px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+            padding: 1.2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            max-width: 550px;
+        }
+
+        .stat-item h4 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-purple);
+        }
+
+        .stat-item p {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* BUTTONS */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.85rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-purple {
+            background-color: var(--accent-purple);
+            color: #ffffff;
+            box-shadow: 0 4px 18px var(--accent-glow);
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-2px);
+            background-color: #b15eff;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--bg-card);
+            border-color: var(--accent-purple);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 5rem 4rem;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-desc {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* TECHNICAL EXPERTISE ICON STRIP */
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem 2.5rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 16px;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            background: rgba(12, 7, 20, 0.4);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .tech-item i {
+            font-size: 1.8rem;
+        }
+
+        .tech-item span {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* WORK & INTERNSHIP CARDS (REFERENCE UI COMPONENT STYLE) */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-purple);
+            box-shadow: 0 8px 24px rgba(157, 78, 221, 0.15);
+            background-color: var(--bg-card-hover);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .card-subtitle {
+            color: var(--accent-purple);
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            color: var(--text-sub);
+            font-size: 0.92rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-list {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-list li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* TAGS & BUTTONS */
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--badge-bg);
+            color: var(--accent-purple);
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            border: 1px solid rgba(157, 78, 221, 0.3);
+        }
+
+        .cert-view-btn {
+            background: transparent;
+            color: var(--accent-purple);
+            border: 1px solid var(--accent-purple);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.3s ease;
+            width: fit-content;
+            margin-top: 0.8rem;
+        }
+
+        .cert-view-btn:hover {
+            background: var(--accent-purple);
+            color: #ffffff;
+        }
+
+        /* GET IN TOUCH FOOTER */
+        .contact-footer {
+            background-color: #07040b;
+            border-top: 1px solid var(--border-color);
+            padding: 5rem 4rem 3rem 4rem;
+        }
+
+        .contact-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-sub);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-detail-item:hover {
+            color: var(--accent-purple);
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-purple);
+        }
+
+        .contact-form {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2.2rem;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-sub);
+        }
+
+        .form-group input, .form-group textarea {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            color: var(--text-main);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent-purple);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 0.85rem;
+        }
+
+        /* LIGHTBOX MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            max-width: 850px;
+            max-height: 85vh;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #ffffff;
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+            nav { padding: 1rem 2rem; }
+            .nav-links { display: none; }
+            .hero-title { font-size: 2.4rem; }
+            section { padding: 4rem 1.5rem; }
+            .contact-container { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Uday <span>Rakhme</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Technical Expertise</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#internships">Internships</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div class="hero-banner" id="about">
+        <div class="hero-content">
+            <div class="profile-avatar-wrapper">
+                <img src="WhatsApp Image 2026-08-17 at 10.18.43 PM.jpeg" alt="Uday Rakhme" class="profile-avatar">
+                <div class="profile-tag">Hello! I am Uday Rakhme</div>
+            </div>
+
+            <h1 class="hero-title">I'm a <span>Java & Web</span> Developer.</h1>
+            <p class="hero-description">
+                Master of Computer Applications (MCA) student at K.K. Wagh Institute of Engineering Education and Research (KKWIEER). Specialized in backend Java development, database management, and responsive web development.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h4>8.09</h4>
+                    <p>MCA Sem 2 SGPA</p>
+                </div>
+                <div class="stat-item">
+                    <h4>8+</h4>
+                    <p>Certifications</p>
+                </div>
+                <div class="stat-item">
+                    <h4>3+</h4>
+                    <p>Roles & Leadership</p>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <a href="Updated_Resume_SyMCA.pdf" target="_blank" class="btn btn-purple">
+                    <i class="fa-solid fa-file-pdf"></i> Download Resume
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fa-solid fa-paper-plane"></i> Get In Touch
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TECHNICAL EXPERTISE SECTION -->
+    <section id="skills">
+        <div class="section-header">
+            <h2 class="section-title">Tools & Technologies</h2>
+            <p class="section-desc">A curated set of tools and technologies I use across web and software development.</p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-item"><i class="devicon-java-plain colored"></i> <span>Java</span></div>
+            <div class="tech-item"><i class="devicon-python-plain colored"></i> <span>Python</span></div>
+            <div class="tech-item"><i class="devicon-php-plain colored"></i> <span>PHP</span></div>
+            <div class="tech-item"><i class="devicon-javascript-plain colored"></i> <span>JavaScript</span></div>
+            <div class="tech-item"><i class="devicon-html5-plain colored"></i> <span>HTML5</span></div>
+            <div class="tech-item"><i class="devicon-css3-plain colored"></i> <span>CSS3</span></div>
+            <div class="tech-item"><i class="devicon-postgresql-plain colored"></i> <span>PostgreSQL</span></div>
+            <div class="tech-item"><i class="devicon-mysql-plain colored"></i> <span>MySQL</span></div>
+            <div class="tech-item"><i class="devicon-git-plain colored"></i> <span>Git</span></div>
+            <div class="tech-item"><i class="devicon-github-original colored"></i> <span>GitHub</span></div>
+            <div class="tech-item"><i class="devicon-spring-plain colored"></i> <span>Spring Boot</span></div>
+            <div class="tech-item"><i class="devicon-vscode-plain colored"></i> <span>VS Code</span></div>
+            <div class="tech-item"><i class="devicon-netbeans-plain colored"></i> <span>NetBeans</span></div>
+            <div class="tech-item"><i class="devicon-oracle-original colored"></i> <span>Oracle</span></div>
+            <div class="tech-item"><i class="devicon-mongodb-plain colored"></i> <span>MongoDB</span></div>
+            <div class="tech-item"><i class="devicon-xampp-plain colored"></i> <span>XAMPP</span></div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience">
+        <div class="section-header">
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-desc">Professional corporate roles and operational monitoring</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="card">
+                <div>
+                    <h3>Part-Time Associate – CMS Department</h3>
+                    <div class="card-subtitle">Datamatics Global Services Ltd. | April 2026 – Present</div>
+                    <p><strong>Description:</strong> Coordinated with USA-based clients, including proctoring activities and client support.</p>
+                    <p style="margin-bottom:0.4rem; font-weight:600; color:var(--text-main);">Responsibilities:</p>
+                    <ul class="card-list">
+                        <li>Monitored operational workflows to ensure high accuracy and quality standards.</li>
+                        <li>Successfully delivered client requirements on time in a cross-cultural environment.</li>
+                    </ul>
+                </div>
+                <div class="tag-container">
+                    <span class="tag">Part-Time Role</span>
+                    <span class="tag">CMS Monitoring</span>
+                    <span class="tag">Client Operations</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERNSHIPS SECTION -->
+    <section id="internships">
+        <div class="section-header">
+            <h2 class="section-title">Internships</h2>
+            <p class="section-desc">Hands-on practical development experience across frontend technologies</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="card">
+                <div>
+                    <h3>Web Design Intern (On-site)</h3>
+                    <div class="card-subtitle">TechnoHacks Solutions | 12 Jan 2026 – 27 Jan 2026</div>
+                    <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript</p>
+                    <p style="margin-bottom:0.4rem; font-weight:600; color:var(--text-main);">Key Contributions:</p>
+                    <ul class="card-list">
+                        <li>Designed clean, responsive web pages with a focus on layout consistency and optimal user experience.</li>
+                        <li>Applied modern CSS techniques to enhance visual aesthetics, accessibility, and overall usability.</li>
+                    </ul>
+                </div>
+                <div class="tag-container">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">On-site</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Web Development Intern (Remote)</h3>
+                    <div class="card-subtitle">Cognifyz Technologies | 23 Dec 2025 – 23 Jan 2026</div>
+                    <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript</p>
+                    <p style="margin-bottom:0.4rem; font-weight:600; color:var(--text-main);">Key Contributions:</p>
+                    <ul class="card-list">
+                        <li>Developed interactive UI components and responsive web interfaces using front-end web technologies.</li>
+                        <li>Ensured web application pages adhered to modern design standards and cross-device functionality.</li>
+                    </ul>
+                </div>
+                <div class="tag-container">
+                    <span class="tag">UI Development</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Remote</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements">
+        <div class="section-header">
+            <h2 class="section-title">Achievements & Leadership</h2>
+            <p class="section-desc">Competitions, leadership positions, and co-curricular projects</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="card">
+                <div>
+                    <div class="card-subtitle">AICTE-IDEA Lab, KKWIEER | Sept 2025</div>
+                    <h3>Avishkar Project Competition</h3>
+                    <p>Presented a <i>Blood Donation and Smart Blood Bank Management System</i>, demonstrating database normalization and backend logic.</p>
+                </div>
+                <div class="tag-container">
+                    <span class="tag">Project Presentation</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-subtitle">MCA Department, KKWIEER | 2026</div>
+                    <h3>ASCEND 2K26 Symposium</h3>
+                    <p><strong>Head – Backstage Committee</strong><br>Led backend event arrangements, certificate operations, and official schedule management.</p>
+                </div>
+                <div class="tag-container">
+                    <span class="tag">Leadership</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-subtitle">MBA Department, KKWIEER | March 2026</div>
+                    <h3>MAVERICK Treasure Hunt</h3>
+                    <p>Participated in an inter-departmental strategic competition emphasizing group execution and creative problem-solving.</p>
+                </div>
+                <div class="tag-container">
+                    <span class="tag">Co-Curricular</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section id="certifications">
+        <div class="section-header">
+            <h2 class="section-title">Certifications</h2>
+            <p class="section-desc">Click any certificate to expand the full-screen view</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="card">
+                <div>
+                    <h3>Employability Skills - BRIDGE</h3>
+                    <div class="card-subtitle">Bosch India Foundation (Oct 2023)</div>
+                    <p>Vocational training covering soft skills, communication, and industry-oriented problem-solving.</p>
+                </div>
+                <button class="cert-view-btn" onclick="openCertModal('BOSCH.jpeg')"><i class="fa-solid fa-expand"></i> View Certificate</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Operating Systems Bootcamp</h3>
+                    <div class="card-subtitle">DevTown & GDG VIT-AP (Feb 2026)</div>
+                    <p>Practical course covering system processes, memory management, and deadlock resolution concepts.</p>
+                </div>
+                <button class="cert-view-btn" onclick="openCertModal('OS_Google_Devtown.jpeg')"><i class="fa-solid fa-expand"></i> View Certificate</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Full Stack Web Development</h3>
+                    <div class="card-subtitle">FutureSkills Prime / NASSCOM (Mar 2025)</div>
+                    <p>NASSCOM professional assessment covering web engineering and dynamic UI architecture.</p>
+                </div>
+                <button class="cert-view-btn" onclick="openCertModal('FSWD.jpeg')"><i class="fa-solid fa-expand"></i> View Certificate</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>React Hooks Interactive Lab</h3>
+                    <div class="card-subtitle">DevTown & MSME (Jan 2026)</div>
+                    <p>Hands-on 5-day bootcamp focusing on state hooks, effect hooks, and React state management.</p>
+                </div>
+                <button class="cert-view-btn" onclick="openCertModal('React_Devtown.jpeg')"><i class="fa-solid fa-expand"></i> View Certificate</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Hashgraph Developer Course</h3>
+                    <div class="card-subtitle">The Hashgraph Association (Nov 2025)</div>
+                    <p>Foundational developer certification for distributed ledger systems on Hedera.</p>
+                </div>
+                <button class="cert-view-btn" onclick="openCertModal('Hashgraph.jpeg')"><i class="fa-solid fa-expand"></i> View Certificate</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>SQL (Basic) Certificate</h3>
+                    <div class="card-subtitle">HackerRank (Jun 2026)</div>
+                    <p>Skill evaluation certification testing relational queries, aggregates, and complex subqueries.</p>
+                </div>
+                <button class="cert-view-btn" onclick="openCertModal('Sql.jpeg')"><i class="fa-solid fa-expand"></i> View Certificate</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- GET IN TOUCH FOOTER -->
+    <footer class="contact-footer" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p>I am open to Java backend development roles, web development projects, and software engineering opportunities. Feel free to contact me directly!</p>
+                
+                <div class="contact-details">
+                    <a href="mailto:udayrakhame@gmail.com" class="contact-detail-item">
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <span>udayrakhame@gmail.com</span>
+                    </a>
+                    <a href="tel:+919322171885" class="contact-detail-item">
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                        <span>+91 9322171885</span>
+                    </a>
+                    <a href="https://github.com/udayrakhme" target="_blank" class="contact-detail-item">
+                        <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+                        <span>github.com/udayrakhme</span>
+                    </a>
+                    <div class="contact-detail-item">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <span>Nashik, Maharashtra, India</span>
+                    </div>
+                </div>
+            </div>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent.');">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="4" placeholder="Write your message here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-purple" style="width: 100%; justify-content: center;">
+                    <i class="fa-solid fa-paper-plane"></i> Send Message
+                </button>
+</form>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Uday Rakhme. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="modal" id="certModal" onclick="closeCertModal()">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImg" src="" alt="Certificate View">
+    </div>
+
+    <!-- LIGHTBOX SCRIPT -->
+    <script>
+        function openCertModal(imageSrc) {
+            const modal = document.getElementById('certModal');
+            const modalImg = document.getElementById('modalImg');
+            modalImg.src = imageSrc;
+            modal.style.display = 'flex';
+        }
+
+        function closeCertModal() {
+            document.getElementById('certModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
